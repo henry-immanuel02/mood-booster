@@ -36,23 +36,23 @@ st.markdown("""
 <div style='text-align:center; font-size:22px; font-weight:600; margin-top:10px;'>
     Made with ❤️ by Henry<br>来自 Henry 的心意 (HTML header)
 </div>
-""", unsafe_allow_html=True)**")**")
+""", unsafe_allow_html=True)))
 st.title("Mood Booster for My Lovely Wife 💌 妻子的快乐加油站")
 st.subheader("Click the buttons to heal your mood. 点点按钮，快乐多一点。")
 
 st.markdown("### Choose your booster 选择你的心情补给:")
 
 if st.button("🎭 Joke / 笑话"):
-    st.markdown(f"**{random.choice(jokes)}**")
+    st.markdown(f"**{random.choice(jokes)})
 
 if st.button("🌸 Compliment / 夸夸你"):
-    st.markdown(f"**{random.choice(compliments)}**")
+    st.markdown(f"**{random.choice(compliments)})
 
 if st.button("🧸 Cute Cat / 可爱小猫"):
     st.image("https://placekitten.com/600/400", caption="If this doesn't work, I'll find cuter cats. 如果没笑，我再换更可爱的猫。")
 
 if st.button("🙇 Apology / 道歉"):
-    st.markdown(f"**Sorry my love. 对不起宝贝。{random.choice(excuses)}**")
+    st.markdown(f"**Sorry my love. 对不起宝贝。{random.choice(excuses)})
     st.balloons()
 
 if st.button("🎵 Chill / 放松一下"):
