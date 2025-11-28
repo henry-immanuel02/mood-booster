@@ -36,7 +36,7 @@ warm_words = [
 ]
 
 # ------------------ UI ------------------
-st.title("Mood Booster for My Lovely Wife 💌 妻子的心情加油站")
+st.title("Mood Booster for My Lovely Wife, Keff Chan💌 妻子的心情加油站")
 st.subheader("Your work is tough — let me lighten it a bit. 工作累了，让我来逗你笑。")
 
 st.markdown("### Choose your booster 选择你的心情补给:")
