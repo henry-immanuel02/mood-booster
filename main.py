@@ -31,7 +31,7 @@ excuses = [
 
 # Fix: Avoid breaking multiline strings
 # Place the Henry message safely above the title using a single-line string
-st.markdown("**Made with love by Henry ❤️ (来自 Henry 的心意)**")
+st.markdown("**Made with love by Henry ❤️ (来自 Henry 的心意)**")**")
 st.title("Mood Booster for My Lovely Wife 💌 妻子的快乐加油站")
 st.subheader("Click the buttons to heal your mood. 点点按钮，快乐多一点。")
 
