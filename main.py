@@ -53,7 +53,7 @@ if st.button("🧸 Cute Cat / 可爱小猫"):
     st.image("https://placekitten.com/600/400", caption="If this doesn't work, I'll find cuter cats. 如果没笑，我再换更可爱的猫。")
 
 if st.button("🙇 Apology / 道歉"):
-    st.markdown(f"**Sorry my love. 对不起宝贝。{random.choice(excuses)}**")
+    st.markdown(f"**Rough day huh? 今天工作太累了吧。{random.choice(excuses)}**")
     st.balloons()
 
 if st.button("🎵 Chill / 放松一下"):
@@ -66,16 +66,18 @@ st.divider()
 st.header("Forgiveness Generator 原谅生成器 ⚙️")
 
 name_from = st.text_input("Sender 发件人", "Henry")
-reason = st.text_input("Why apologizing 道歉理由", "being silly 太笨了")
+reason = st.text_input("Why comforting 安慰理由", "being silly 太笨了")
 
 if st.button("Generate Letter 生成小信"):
     text = [
         f"Hey love, this is {name_from}. 这是我。",
-        f"Sorry because {reason}. 对不起因为 {reason}。",
+        f"Not your fault at all, just want to comfort you because {reason}. 对不起因为 {reason}。",
         "You can stay upset for a bit, but I'm here ready with hugs. 你生气我抱抱。",
         "Signature: a kiss & a promise. 亲亲 + 改进承诺。💋",
     ]
-    st.markdown("\n\n".join([f"**{t}**" for t in text]))
+    st.markdown("
+
+".join([f"**{t}**" for t in text]))
     st.balloons()
 
 st.caption("Made with love & panic. 带着爱和一点慌张做的。")
