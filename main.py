@@ -31,10 +31,10 @@ excuses = [
 
 # Fix: Avoid breaking multiline strings
 # Place the Henry message safely above the title using a single-line string
-# Header (HTML version, cleaner & safe)
+# Header (HTML version, fixed and clean — final)
 st.markdown("""
 <div style='text-align:center; font-size:22px; font-weight:600; margin-top:10px;'>
-    Made with ❤️ by Henry<br>来自 Henry 的心意
+    Made with ❤️ by Henry<br>来自 Henry 的心意 (HTML header)
 </div>
 """, unsafe_allow_html=True)**")**")
 st.title("Mood Booster for My Lovely Wife 💌 妻子的快乐加油站")
