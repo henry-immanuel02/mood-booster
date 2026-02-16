@@ -84,7 +84,7 @@ else:
     # PERBAIKAN: HTML juga diratakan kiri
     st.markdown("""
 <div style="background-color: white; padding: 20px; border-radius: 15px; border: 4px solid #ffde00; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-    <h3 style="color: black; margin-bottom:10px;">Keff The Elite Trainer Profile</h3>
+    <h3 style="color: black; margin-bottom:10px;">Keff Chan The Elite Trainer Profile</h3>
     <p style="color: black; font-size:16px;"><b>Status:</b> Level 100 Boyfriend</p>
     <p style="color: black; font-size:16px;"><b>Ability:</b> Best Hugs / Always Cute and Horny :p</p>
 </div>
