@@ -31,36 +31,12 @@ if not st.session_state.answered_yes:
     nay_font = max(16 - (st.session_state.nay_count * 2), 1)
     nay_opacity = max(1 - (st.session_state.nay_count * 0.15), 0.05)
 
-    st.markdown(
-f"""
-<style>
+    st.markdown("""
+    ### Keff The Elite Trainer Profile  
+    **Status:** Level 100 Boyfriend  
+    **Ability:** Best Hugs / Always Cute and Horny :p  
+    """)
 
-        /* TARGET PRIMARY BUTTON SAFELY */
-        div[data-testid="stButton"] button {{
-            transition: all 0.2s ease-in-out;
-        }}
-
-        div[data-testid="stButton"] button[kind="primary"] {{
-            font-size: {yay_font}px !important;
-            padding: {yay_padding}px {yay_padding*2}px !important;
-            transform: scale({scale});
-            background-color: #ff4b4b !important;
-            color: white !important;
-            border: 3px solid white !important;
-            border-radius: 15px !important;
-        }}
-
-        /* NAY BUTTON STYLE */
-        .nay-btn-style button {{
-            font-size: {nay_font}px !important;
-            opacity: {nay_opacity};
-            background-color: #808080 !important;
-            border-radius: 10px !important;
-        }}
-
-</style>
-""",
-unsafe_allow_html=True)
 
     st.write("### Do you want to be my Valentine?")
 
