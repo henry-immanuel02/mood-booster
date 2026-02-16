@@ -23,7 +23,7 @@ if not st.session_state.answered_yes:
     st.title("💌 A Special Message...")
     st.subheader("I have an important question for you.")
 
-    # 🔥 EXPONENTIAL GROWTH (This gets insane fast)
+    # 🔥 EXPONENTIAL GROWTH
     scale = 1.25 ** st.session_state.nay_count
     yay_font = 24 + (st.session_state.nay_count * 12)
     yay_padding = 12 + (st.session_state.nay_count * 8)
@@ -35,12 +35,15 @@ if not st.session_state.answered_yes:
         f"""
         <style>
 
-        /* YES BUTTON (Primary) */
-        button[kind="primary"] {{
+        /* TARGET PRIMARY BUTTON SAFELY */
+        div[data-testid="stButton"] button {{
+            transition: all 0.2s ease-in-out;
+        }}
+
+        div[data-testid="stButton"] button[kind="primary"] {{
             font-size: {yay_font}px !important;
             padding: {yay_padding}px {yay_padding*2}px !important;
             transform: scale({scale});
-            transition: all 0.2s ease-in-out;
             background-color: #ff4b4b !important;
             color: white !important;
             border: 3px solid white !important;
@@ -52,7 +55,6 @@ if not st.session_state.answered_yes:
             font-size: {nay_font}px !important;
             opacity: {nay_opacity};
             background-color: #808080 !important;
-            transition: all 0.2s ease-in-out;
             border-radius: 10px !important;
         }}
 
@@ -83,11 +85,9 @@ if not st.session_state.answered_yes:
     # ==============================
     with col_nay_area:
 
-        # Random vertical jump
         for _ in range(random.randint(0, 15)):
             st.write("")
 
-        # Random horizontal shift
         inner_cols = st.columns([1, 1, 1])
         with inner_cols[random.randint(0, 2)]:
             st.markdown('<div class="nay-btn-style">', unsafe_allow_html=True)
@@ -105,19 +105,31 @@ else:
     st.title("Pokémon Valentine's Quest")
     st.success("Successfully Caught! You are now in my Party forever.")
 
+    # TRAINER CARD (HTML FIXED)
     st.markdown(
         """
-        <div style="
-            background-color: white; 
-            padding: 20px; 
-            border-radius: 15px; 
-            border: 4px solid #ffde00;">
-            
-            <h3 style="color: black;">Keff The Elite Trainer Profile</h3>
-            <p style="color: black;"><b>Status:</b> Level 100 Boyfriend</p>
-            <p style="color: black;"><b>Ability:</b> Best Hugs / Always Cute and Horny :p</p>
-        </div>
-        """,
+<div style="
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    border: 4px solid #ffde00;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+">
+
+    <h3 style="color: black; margin-bottom:10px;">
+        Keff The Elite Trainer Profile
+    </h3>
+
+    <p style="color: black; font-size:16px;">
+        <b>Status:</b> Level 100 Boyfriend
+    </p>
+
+    <p style="color: black; font-size:16px;">
+        <b>Ability:</b> Best Hugs / Always Cute and Horny :p
+    </p>
+
+</div>
+""",
         unsafe_allow_html=True,
     )
 
@@ -126,9 +138,8 @@ else:
     if st.button("Open your Valentine Gift 🎁"):
         st.success("I love you more than Pikachu loves Ketchup!")
 
-        # Ganti path ini kalau deploy ke cloud
         st.image(
-            "/Users/henryimmanuelsihombing/Documents/MNC AI/me and keff.jpeg",
+            "me and keff.jpeg",
             caption="You caught my heart! ❤️",
             width=700,
         )
