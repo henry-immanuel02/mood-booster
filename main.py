@@ -32,8 +32,8 @@ if not st.session_state.answered_yes:
     nay_opacity = max(1 - (st.session_state.nay_count * 0.15), 0.05)
 
     st.markdown(
-        f"""
-        <style>
+    f"""
+    <style>
 
         /* TARGET PRIMARY BUTTON SAFELY */
         div[data-testid="stButton"] button {{
@@ -58,9 +58,9 @@ if not st.session_state.answered_yes:
             border-radius: 10px !important;
         }}
 
-        </style>
-        """,
-        unsafe_allow_html=True,
+    </style>
+    """,
+    unsafe_allow_html=True,
     )
 
     st.write("### Do you want to be my Valentine?")
