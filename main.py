@@ -1,79 +1,141 @@
-# FINAL CLEAN VERSION — FOR WORK-RELATED BAD MOOD (NO SYNTAX ERRORS)
-# Save as: mood_booster.py
-# Run: streamlit run mood_booster.py
-
 import streamlit as st
 import random
 
-st.set_page_config(page_title="Mood Booster 💌", page_icon="💖", layout="centered")
+# ==============================
+# PAGE CONFIG
+# ==============================
+st.set_page_config(page_title="A Wild Request Appears!", page_icon="❤️")
 
-# ------------------ HEADER ------------------
-st.markdown("""
-<div style='text-align:center; font-size:24px; font-weight:600; margin-top:10px;'>
-    Made with ❤️ by Henry<br>来自 Henry 的心意
-</div>
-""", unsafe_allow_html=True)
+# ==============================
+# SESSION STATE
+# ==============================
+if "answered_yes" not in st.session_state:
+    st.session_state.answered_yes = False
 
-# ------------------ DATA ------------------
-jokes = [
-    "Work stressful? Here's a joke: Why don't programmers like nature? Too many bugs. 自然界太多 bug。😂",
-    "Clouds are romantic because they wait for sunset. You should rest too. 🌇",
-    "Your mood offline only. Try reboot your heart? 重启一下心情吧~ 🔁",
-    "You're like WiFi — when your signal strong, my world peaceful. 📶💖",
-]
+if "nay_count" not in st.session_state:
+    st.session_state.nay_count = 0
 
-comforts = [
-    "You're doing amazing, even if today feels heavy. 今天真的辛苦你了。",
-    "You deserve rest, not stress. 你值得好好休息。",
-    "Work tough, but you tougher. 工作难，你更强。",
-    "Even warriors need breaks — you're one of them. 战士也要休息。",
-]
+# ==============================
+# VALENTINE GATE
+# ==============================
+if not st.session_state.answered_yes:
 
-warm_words = [
-    "I’m here to cheer for you. 我在这边给你打气。",
-    "Take your time, breathe, I'm with you. 慢慢来，我陪着你。",
-    "It’s okay to feel tired. 今天可以不坚强。",
-]
+    st.title("💌 A Special Message...")
+    st.subheader("I have an important question for you.")
 
-# ------------------ UI ------------------
-st.title("Mood Booster for My Lovely Wife, Keff Chan💌 妻子的心情加油站")
-st.subheader("Your work is tough — let me lighten it a bit. 工作累了，让我来逗你笑。")
+    # 🔥 EXPONENTIAL GROWTH (This gets insane fast)
+    scale = 1.25 ** st.session_state.nay_count
+    yay_font = 24 + (st.session_state.nay_count * 12)
+    yay_padding = 12 + (st.session_state.nay_count * 8)
 
-st.markdown("### Choose your booster 选择你的心情补给:")
+    nay_font = max(16 - (st.session_state.nay_count * 2), 1)
+    nay_opacity = max(1 - (st.session_state.nay_count * 0.15), 0.05)
 
-if st.button("🎭 Joke / 笑一下"):
-    st.markdown(f"**{random.choice(jokes)}**")
+    st.markdown(
+        f"""
+        <style>
 
-if st.button("🌸 Comfort / 安慰你"):
-    st.markdown(f"**{random.choice(comforts)}**")
+        /* YES BUTTON (Primary) */
+        button[kind="primary"] {{
+            font-size: {yay_font}px !important;
+            padding: {yay_padding}px {yay_padding*2}px !important;
+            transform: scale({scale});
+            transition: all 0.2s ease-in-out;
+            background-color: #ff4b4b !important;
+            color: white !important;
+            border: 3px solid white !important;
+            border-radius: 15px !important;
+        }}
 
-if st.button("🧸 Cute Cat / 小猫治愈"):
-    st.image("https://placekitten.com/600/400", caption="Cat therapy activated. 猫咪治疗启动。🐾")
+        /* NAY BUTTON STYLE */
+        .nay-btn-style button {{
+            font-size: {nay_font}px !important;
+            opacity: {nay_opacity};
+            background-color: #808080 !important;
+            transition: all 0.2s ease-in-out;
+            border-radius: 10px !important;
+        }}
 
-if st.button("💛 Warm Words / 暖心话"):
-    st.markdown(f"**{random.choice(warm_words)}**")
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.write("### Do you want to be my Valentine?")
+
+    col_yay, col_nay_area = st.columns([2, 1])
+
+    # ==============================
+    # YES BUTTON
+    # ==============================
+    with col_yay:
+        if st.button(
+            f"YES{'!' * st.session_state.nay_count}",
+            key="yay_btn",
+            type="primary",
+        ):
+            st.session_state.answered_yes = True
+            st.balloons()
+            st.rerun()
+
+    # ==============================
+    # CHAOTIC NAY BUTTON
+    # ==============================
+    with col_nay_area:
+
+        # Random vertical jump
+        for _ in range(random.randint(0, 15)):
+            st.write("")
+
+        # Random horizontal shift
+        inner_cols = st.columns([1, 1, 1])
+        with inner_cols[random.randint(0, 2)]:
+            st.markdown('<div class="nay-btn-style">', unsafe_allow_html=True)
+            if st.button("Nay", key="nay_btn"):
+                st.session_state.nay_count += 1
+                st.rerun()
+            st.markdown("</div>", unsafe_allow_html=True)
+
+# ==============================
+# AFTER YES
+# ==============================
+else:
+
     st.balloons()
+    st.title("Pokémon Valentine's Quest")
+    st.success("Successfully Caught! You are now in my Party forever.")
 
-if st.button("🎵 Chill / 放松一下"):
-    st.write("Inhale... exhale... 深呼吸。你可以休息一下。")
-    st.write("I’ll get you snacks if needed. 想吃什么我去买。")
+    st.markdown(
+        """
+        <div style="
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 15px; 
+            border: 4px solid #ffde00;">
+            
+            <h3 style="color: black;">Keff The Elite Trainer Profile</h3>
+            <p style="color: black;"><b>Status:</b> Level 100 Boyfriend</p>
+            <p style="color: black;"><b>Ability:</b> Best Hugs / Always Cute and Horny :p</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-st.divider()
+    st.write("---")
 
-# ------------------ Encouragement Letter ------------------
-st.header("Encouragement Generator 鼓励生成器 ⚙️")
+    if st.button("Open your Valentine Gift 🎁"):
+        st.success("I love you more than Pikachu loves Ketchup!")
 
-name_from = st.text_input("Sender 发件人", "Henry")
-reason = st.text_input("Reason 理由", "you had a tough workday 工作太累了")
+        # Ganti path ini kalau deploy ke cloud
+        st.image(
+            "/Users/henryimmanuelsihombing/Documents/MNC AI/me and keff.jpeg",
+            caption="You caught my heart! ❤️",
+            width=700,
+        )
 
-if st.button("Generate Letter 生成小信"):
-    text = [
-        f"Hey love, it's {name_from}. 这是我。",
-        f"I know today was hard because {reason}. 今天真的不容易。",
-        "I'm proud of you for getting through it. 我以你为荣。",
-        "Come here, let me comfort you. 抱一个吧。💛",
-    ]
-    st.markdown("\n\n".join([f"**{t}**" for t in text]))
-    st.balloons()
+        st.write(
+            "It's me again! I am the gifttt, our love story has been extended forever"
+        )
 
-st.caption("Made with love, care, and zero syntax errors. 🧸💛")
+    st.write("---")
+    st.caption("Made with ❤️ for my favorite Trainer.")
